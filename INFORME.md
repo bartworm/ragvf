@@ -9,7 +9,7 @@
 
 ### 1.1 Arquitectura General
 
-El sistema implementado sigue un pipeline de procesamiento en múltiples etapas diseñado para emular la forma en que un humano lee y comprende documentos científicos:
+El sistema implementado sigue un pipeline de procesamiento en múltiples etapas diseñado para imitar como una persona lee los documentos, segun nuestra experiencia:
 
 ```
 PDF → Extracción → Chunking → Embeddings → Qdrant → Retrieval → Reranking → LLM → Respuesta
@@ -33,11 +33,11 @@ PDF → Extracción → Chunking → Embeddings → Qdrant → Retrieval → Rer
 
 ---
 
-## 2. Filosofía de Diseño: Emulando la Lectura Humana
+## 2. Panteamiento : Imitando lectura humana
 
 ### 2.1 Principio Central
 
-Diseñé el sistema bajo la premisa de **replicar el proceso cognitivo de lectura científica**:
+Diseñamos el sistema bajo la premisa de **replicar el proceso cognitivo de lectura científica**:
 
 > *"Cuando un humano lee un paper, no solo procesa el texto lineal. Salta entre secciones, relaciona tablas con su contexto narrativo, y construye un modelo mental de la información estructurada."*
 
@@ -52,7 +52,7 @@ Diseñé el sistema bajo la premisa de **replicar el proceso cognitivo de lectur
 
 ### 2.3 Ejemplo Concreto
 
-**Humano leyendo un paper:**
+**Persona lee un paper:**
 1. Ve título de tabla: *"Comparación de Algoritmos de ML"*
 2. Lee párrafo anterior que explica el experimento
 3. Analiza la tabla completa solo si es relevante
@@ -72,15 +72,15 @@ Diseñé el sistema bajo la premisa de **replicar el proceso cognitivo de lectur
 
 #### **P1: Pérdida de Estructura**
 - **Problema**: Los embeddings tradicionales colapsan la estructura tabular 2D en texto 1D
-- **Solución**: Mantener tablas completas en Parquet + descriptores semánticos separados
+- **Propuesta**: Mantener tablas completas en Parquet + descriptores semánticos separados
 
 #### **P2: Contexto Desconectado**
 - **Problema**: Las tablas sin su contexto narrativo pierden significado
-- **Solución**: Captura automática de N párrafos antes/después (configurable)
+- **Propuesta**: Captura automática de N párrafos antes/después (configurable)
 
 #### **P3: Overhead de Carga**
 - **Problema**: Cargar todas las tablas completas es costoso
-- **Solución**: Two-stage retrieval (descriptores livianos → tablas full selectivas)
+- **Propuesta**: Two-stage retrieval (descriptores livianos → tablas full selectivas)
 
 ### 3.2 Métricas de Validación
 
@@ -94,11 +94,11 @@ Según el benchmark con 5 preguntas:
 
 **Conclusión cuantitativa**: El tratamiento de tablas mejora el score en **+5.7%** respecto al baseline.
 
-### 3.3 Desafíos Técnicos Profundos
+### 3.3 Problemas identificado
 
-Durante la implementación, identifiqué cuatro desafíos técnicos fundamentales que afectan directamente la calidad de la recuperación de tablas:
+Durante la implementación, identificamos cuatro problemas que afectan directamente la calidad de la recuperación de tablas:
 
-#### **1. El Fenómeno del "Ruido Estructural" (Lost in Translation)**
+#### **1. El Fenómeno del "Ruido Estructural" **
 
 **Problema observado:**
 Cuando Camelot extrae una tabla de un PDF y la convierte a texto plano para generar embeddings, se produce una pérdida masiva de estructura semántica. Por ejemplo:
@@ -116,7 +116,7 @@ Texto extraído:
 "Algoritmo Precisión F1 Random F. 0.94 0.92 SVM 0.87 0.85"
 ```
 
-El modelo de embeddings (all-MiniLM-L6-v2) ve una secuencia lineal de tokens sin comprender que "0.94" está asociado a "Precisión" de "Random Forest". Esta pérdida de estructura 2D es lo que llamo **ruido estructural**.
+El modelo de embeddings (all-MiniLM-L6-v2) ve una secuencia lineal de tokens sin comprender que "0.94" está asociado a "Precisión" de "Random Forest". Esta pérdida de estructura 2D es lo que llamammos **ruido estructural**.
 
 **Impacto medido:**
 - Consultas numéricas específicas ("¿Cuál modelo tiene F1 > 0.90?") tienen menor recall
@@ -126,10 +126,10 @@ El modelo de embeddings (all-MiniLM-L6-v2) ve una secuencia lineal de tokens sin
 - Generación de descriptores semánticos explícitos: "Tabla comparativa de precisión de algoritmos Random Forest (0.94) y SVM (0.87)"
 - Almacenamiento de tablas completas en Parquet para que el LLM procese la estructura real
 
-#### **2. Desajuste de Embeddings (Domain Gap)**
+#### **2. Desajuste de Embeddings **
 
 **Problema observado:**
-El modelo de embeddings all-MiniLM-L6-v2 fue entrenado en corpus generalista (Wikipedia, Reddit, noticias). Cuando se enfrenta a contenido técnico tabular, presenta tres limitaciones:
+El modelo de embeddings all-MiniLM-L6-v2 fue entrenado en corpus generalista (Wikipedia, Reddit, noticias). Cuando se enfrenta a contenido técnico tabular, presenta las siguientes limitaciones:
 
 1. **Vocabulario técnico limitado**: Términos como "cross-entropy", "BLEU score", "p-value" tienen representaciones vectoriales pobres
 2. **Insensibilidad a números**: El modelo trata "0.94" y "0.87" casi como sinónimos (similitud coseno ~0.98)
@@ -155,7 +155,7 @@ La diferencia es pequeña (4 puntos porcentuales) a pesar de que Chunk A contien
 **Limitación pendiente:**
 Modelos especializados como TabNet o TAPAS (diseñados para tablas) podrían mejorar significativamente, pero requieren infraestructura adicional de entrenamiento.
 
-#### **3. Dilución del Contexto (Chunking de Tablas)**
+#### **3. Dilución del Contexto **
 
 **Problema observado:**
 El proceso de chunking (división de documentos en fragmentos de 1000 caracteres con overlap de 150) crea contaminación de contexto:
@@ -182,7 +182,7 @@ Chunk N+2: "...conclusiones indican que para datasets pequeños, SVM es más efi
 #### **4. Limitación del LLM Local (Llama 3.2-vision)**
 
 **Problema observado:**
-Utilicé Llama 3.2-vision (7.9GB) por restricciones de GPU (12GB). Este modelo presenta dos limitaciones críticas:
+utilizamos Llama 3.2-vision (7.9GB) por restricciones de GPU (12GB). Este modelo presenta dos limitaciones críticas:
 
 1. **Ventana de atención limitada**: 8192 tokens (~6000 palabras)
 2. **Fenómeno "lost-in-the-middle"**: El modelo atiende mejor al inicio y final del contexto, ignorando información en el medio
@@ -208,7 +208,7 @@ En 2 de 5 preguntas del benchmark, la respuesta del LLM citó solo la primera ta
 - Limitación de K_FINAL=10 para no saturar la ventana de atención
 
 **Alternativa futura:**
-Modelos con ventanas más grandes (Llama 3.3 70B con 128k tokens) o arquitecturas sin degradación posicional (como Mamba) resolverían este problema, pero requieren más recursos computacionales.
+Modelos con ventanas más grandes (Llama 3.3 70B con 128k tokens) o arquitecturas sin degradación posicional resolverían este problema, pero requieren más recursos computacionales.
 
 ---
 
@@ -245,19 +245,19 @@ Modelos con ventanas más grandes (Llama 3.3 70B con 128k tokens) o arquitectura
 
 ### 5.1 Interpretando la Mejora Modesta (+5.7%): ¿Utilidad Real o Procesamiento Deficiente?
 
-**La pregunta crítica:**
-La mejora de solo +5.7% en el score con tablas (0.525 → 0.555) puede interpretarse de dos formas radicalmente diferentes:
 
-1. **Hipótesis pesimista**: Las tablas no aportan mucho valor real para las queries evaluadas
-2. **Hipótesis realista**: Las tablas SÍ tienen valor, pero el procesamiento actual pierde información crítica
+La mejora de solo +5.7% en el score con tablas (0.525 → 0.555) se puede interpretarse de dos formas :
+
+1.Las tablas no aportan mucho valor real para las queries evaluadas
+2.Las tablas si tienen valor, pero el procesamiento actual pierde información crítica
 
 **Limitación del análisis realizado:**
 
-Este proyecto se enfocó en **exploración e implementación del pipeline** más que en análisis exhaustivo de resultados. No realicé una evaluación cualitativa sistemática de cada query del benchmark para validar si las tablas recuperadas eran realmente relevantes. Los resultados cuantitativos (scores de similitud) son insuficientes para determinar la utilidad real.
+Este proyecto se enfocó en exploración e implementación del pipeline más que en análisis exhaustivo de resultados. No realizamos una evaluación cualitativa sistemática de cada query del benchmark para validar si las tablas recuperadas eran realmente relevantes. Los resultados cuantitativos (scores de similitud) son insuficientes para determinar la utilidad real. caimos en un problema clasico de enfocarnos mas en el codigo que en el objetivo del mismo.
 
 **Hipótesis sobre procesamiento deficiente (no validada experimentalmente):**
 
-Basándome en observaciones preliminares durante el desarrollo, identifico tres cuellos de botella probables:
+Basándome en observaciones preliminares durante el desarrollo, identificamos tres cuellos de botella probables:
 
 1. **Descriptores heurísticos demasiado genéricos**:
    - Los descriptores generados automáticamente (sin LLM) probablemente no capturan valores numéricos específicos
@@ -273,7 +273,7 @@ Basándome en observaciones preliminares durante el desarrollo, identifico tres 
    - Si el descriptor ligero tiene baja similitud (< 0.75 umbral), la tabla completa nunca se carga
    - Este diseño optimiza latencia pero puede sacrificar recall
 
-**Lo que NO puedo afirmar sin análisis adicional:**
+**Lo que que nos quedo pendiente de analisar :**
 
 - ¿Qué porcentaje de tablas recuperadas realmente respondían las queries?
 - ¿Hubo falsos negativos (tablas relevantes no recuperadas)?
@@ -288,9 +288,9 @@ Basándome en observaciones preliminares durante el desarrollo, identifico tres 
 4. **Experimento controlado**: Comparar descriptores heurísticos vs generados por LLM (requiere costos de API)
 5. **Embeddings especializados**: Evaluar TAPAS o TabNet para tablas numéricas
 
-**Conclusión honesta:**
 
-Dada la limitación temporal y el enfoque en implementación del pipeline, **no puedo afirmar categóricamente si la mejora modesta se debe a falta de utilidad de las tablas o a procesamiento deficiente**. Las observaciones preliminares sugieren lo segundo, pero se requiere análisis cuantitativo riguroso para validarlo. Este es un ejemplo de cómo las métricas automáticas (similarity scores) son necesarias pero insuficientes para evaluar sistemas RAG.
+
+Dada la limitación temporal y el enfoque en implementación del pipeline, **no podemos afirmar categóricamente si la mejora modesta se debe a falta de utilidad de las tablas o a procesamiento deficiente**. Las observaciones preliminares sugieren lo segundo, pero se requiere análisis cuantitativo riguroso para validarlo. Este es un ejemplo de cómo las métricas automáticas (similarity scores) son necesarias pero insuficientes para evaluar sistemas RAG.
 
 ### 5.2 Profundidad del Tratamiento
 
@@ -307,12 +307,12 @@ Dada la limitación temporal y el enfoque en implementación del pipeline, **no 
 
 ---
 
-## 6. Conclusiones y Reflexión
+## 6. Conclusiones
 
 ### 6.1 Utilidad del Tratamiento de Tablas
 
 **Conclusión principal:**
-> **El tratamiento especializado de tablas en RAG es útil y mejora los resultados, pero su efectividad depende críticamente de CÓMO se traigan y contextualicen.**
+> **El tratamiento especializado de tablas en RAG es útil y mejora los resultados, pero su efectividad depende críticamente de como se traigan y contextualicen.**
 
 **Evidencia:**
 - Mejora cuantitativa del 5.7% en score
@@ -339,7 +339,7 @@ Datos Completos (GB) → Tablas (KB) → Gráficos (KB) → Narrativa (KB)
 #### **Propuesta: Metadata Estructurado para RAG**
 
 **Visión:**
-Propongo que los papers del futuro incluyan **capas de metadata semántico**:
+Proponemos que los papers del futuro incluyan **capas de metadata semántico**:
 
 ```
 Paper tradicional (PDF)
@@ -361,7 +361,7 @@ Paper tradicional (PDF)
 ### 6.3 Caso de Uso Real: Recuperación de Información Técnica Industrial
 
 **Contexto:**
-Paralelamente a este proyecto, estoy piloteando un sistema RAG para recuperar información técnica histórica en un contexto industrial. El problema es familiar: décadas de documentación técnica dispersa en múltiples formatos y sistemas sin estructura común.
+Paralelamente a este proyecto, Bernardo, esta piloteando un sistema RAG para recuperar información técnica histórica en ENAP. El problema : décadas de documentación técnica dispersa en múltiples formatos y sistemas sin estructura común.
 
 **Fuentes de información:**
 - P&IDs (Piping and Instrumentation Diagrams)
@@ -371,15 +371,15 @@ Paralelamente a este proyecto, estoy piloteando un sistema RAG para recuperar in
 - Eventos de seguridad de procesos (PSE - Process Safety Events)
 - Reportes de ingeniería legacy en formatos obsoletos
 
-**El desafío dual:**
-1. **Ordenar lo antiguo**: Información histórica sin metadata estructurada, almacenada en repositorios legacy con nomenclaturas inconsistentes
+**El desafío :**
+1. **Ordenar lo antiguo**: Información histórica sin metadata estructurada, almacenada en repositorios  con nomenclaturas inconsistentes
 2. **Cambiar cómo se escribe lo nuevo**: Establecer estándares de metadata para documentación futura que sea "RAG-ready" desde su creación
 
 **Propuesta en desarrollo:**
-- **Estandarización retroactiva**: Extracción y enriquecimiento de metadata de documentos históricos mediante NLP
+- **Estandarización retroactiva**: Extracción y enriquecimiento de metadata de documentos históricos mediante NLP, OCR y supervisado por expertos del area
 - **Schema común**: Definir ontología para tags, equipos, sistemas, eventos (ej: "TAG-12345 → Bomba → Sistema de Refrigeración")
 - **Linaje de información**: Trackear relaciones causales (ej: "Falla X → Inspección Y → Modificación Z")
-- **Templates estructurados**: Nuevos reportes incluyen metadata JSON embebido para ingesta directa en RAG
+- **Templates estructurados**: Nuevos reportes incluiran metadata  embebido para ingesta directa en RAG
 
 **Lección aplicable a papers científicos:**
 > *"La información técnica tiene valor a largo plazo solo si tiene estructura de metadata relacionada y estandarizada. No basta con documentar, hay que documentar para ser recuperable."*
@@ -405,16 +405,4 @@ Este piloto industrial refuerza la conclusión de este proyecto académico: **el
 2. Incluir datos originales en repositorios (no solo visualizaciones)
 3. Estandarizar metadata semántico en papers
 
----
 
-## Referencias Técnicas
-
-- **Framework**: LangChain + Qdrant + Sentence Transformers
-- **LLM**: Ollama (Llama 3.2-vision, 7.9GB, local)
-- **Extracción**: Camelot + PDFPlumber + PyMuPDF
-- **Reranking**: Cross-encoder/ms-marco-MiniLM-L-6-v2
-- **Storage**: Parquet (snappy compression) + Qdrant (HNSW index)
-
----
-
-**Última actualización:** 2025-12-19
