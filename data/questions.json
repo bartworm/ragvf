@@ -1,0 +1,352 @@
+[
+  {
+    "id": 1,
+    "question": "¿Qué es el benzoato de sodio y cómo funciona como conservante?",
+    "category": "conceptual",
+    "expected_topics": ["benzoato", "antimicrobiano", "mecanismo", "pH"],
+    "difficulty": "facil"
+  },
+  {
+    "id": 2,
+    "question": "¿A qué pH es más efectivo el ácido sórbico?",
+    "category": "tecnica",
+    "expected_topics": ["sorbato", "pH", "efectividad"],
+    "difficulty": "facil"
+  },
+  {
+    "id": 3,
+    "question": "¿Cuáles son las alternativas naturales al benzoato de sodio?",
+    "category": "comparativa",
+    "expected_topics": ["alternativas", "naturales", "conservantes"],
+    "difficulty": "media"
+  },
+  {
+    "id": 4,
+    "question": "¿Qué concentración de nisina se recomienda para productos lácteos?",
+    "category": "tecnica",
+    "expected_topics": ["nisina", "concentracion", "lacteos"],
+    "difficulty": "media"
+  },
+  {
+    "id": 5,
+    "question": "¿Qué microorganismos son resistentes al benzoato de sodio?",
+    "category": "tecnica",
+    "expected_topics": ["resistencia", "microorganismos", "benzoato"],
+    "difficulty": "media"
+  },
+  {
+    "id": 6,
+    "question": "Comparación entre nisina y natamicina como conservantes",
+    "category": "comparativa",
+    "expected_topics": ["nisina", "natamicina", "comparacion"],
+    "difficulty": "media"
+  },
+  {
+    "id": 7,
+    "question": "¿Cómo afecta la actividad de agua (aW) a la efectividad de los conservantes?",
+    "category": "conceptual",
+    "expected_topics": ["actividad agua", "aw", "efectividad"],
+    "difficulty": "dificil"
+  },
+  {
+    "id": 8,
+    "question": "¿Qué conservantes son efectivos contra hongos y levaduras?",
+    "category": "tecnica",
+    "expected_topics": ["hongos", "levaduras", "conservantes"],
+    "difficulty": "facil"
+  },
+  {
+    "id": 9,
+    "question": "¿Cuál es la dosis máxima permitida de sorbato de potasio en bebidas?",
+    "category": "tecnica",
+    "expected_topics": ["sorbato", "dosis", "legislacion", "bebidas"],
+    "difficulty": "media"
+  },
+  {
+    "id": 10,
+    "question": "¿Qué es la bacteriocina y cómo se usa en alimentos?",
+    "category": "conceptual",
+    "expected_topics": ["bacteriocina", "antimicrobiano", "aplicacion"],
+    "difficulty": "media"
+  },
+  {
+    "id": 11,
+    "question": "¿Cómo se combina el pH y la temperatura para optimizar conservantes?",
+    "category": "tecnica",
+    "expected_topics": ["pH", "temperatura", "sinergismo"],
+    "difficulty": "dificil"
+  },
+  {
+    "id": 12,
+    "question": "¿Qué conservantes son seguros para alimentos infantiles?",
+    "category": "aplicacion",
+    "expected_topics": ["seguridad", "infantil", "legislacion"],
+    "difficulty": "media"
+  },
+  {
+    "id": 13,
+    "question": "¿Cuál es el mecanismo de acción de los parabenos?",
+    "category": "conceptual",
+    "expected_topics": ["parabenos", "mecanismo", "antimicrobiano"],
+    "difficulty": "media"
+  },
+  {
+    "id": 14,
+    "question": "¿Qué conservantes funcionan mejor en productos cárnicos?",
+    "category": "aplicacion",
+    "expected_topics": ["carnicos", "conservantes", "aplicacion"],
+    "difficulty": "facil"
+  },
+  {
+    "id": 15,
+    "question": "¿Cómo afecta el contenido de grasa a la efectividad de conservantes?",
+    "category": "tecnica",
+    "expected_topics": ["grasa", "efectividad", "particion"],
+    "difficulty": "dificil"
+  },
+  {
+    "id": 16,
+    "question": "¿Qué es el efecto de valla múltiple (hurdle technology)?",
+    "category": "conceptual",
+    "expected_topics": ["hurdle", "vallas", "conservacion"],
+    "difficulty": "media"
+  },
+  {
+    "id": 17,
+    "question": "¿Cuáles son los límites de nitritos en productos cárnicos curados?",
+    "category": "tecnica",
+    "expected_topics": ["nitritos", "carnicos", "legislacion"],
+    "difficulty": "facil"
+  },
+  {
+    "id": 18,
+    "question": "¿Qué conservantes son efectivos contra Listeria monocytogenes?",
+    "category": "tecnica",
+    "expected_topics": ["listeria", "conservantes", "patogenos"],
+    "difficulty": "media"
+  },
+  {
+    "id": 19,
+    "question": "¿Cómo se usa el dióxido de azufre en vinos?",
+    "category": "aplicacion",
+    "expected_topics": ["sulfitos", "vino", "enologia"],
+    "difficulty": "facil"
+  },
+  {
+    "id": 20,
+    "question": "¿Qué diferencia hay entre conservantes y antioxidantes?",
+    "category": "conceptual",
+    "expected_topics": ["conservantes", "antioxidantes", "diferencia"],
+    "difficulty": "facil"
+  },
+  {
+    "id": 21,
+    "question": "¿Cuál es la vida útil esperada con diferentes conservantes en jugos?",
+    "category": "aplicacion",
+    "expected_topics": ["jugos", "vida util", "conservantes"],
+    "difficulty": "media"
+  },
+  {
+    "id": 22,
+    "question": "¿Qué concentración de ácido benzoico es efectiva en salsas?",
+    "category": "tecnica",
+    "expected_topics": ["benzoico", "concentracion", "salsas"],
+    "difficulty": "media"
+  },
+  {
+    "id": 23,
+    "question": "¿Cómo interactúan los conservantes con otros aditivos alimentarios?",
+    "category": "tecnica",
+    "expected_topics": ["interacciones", "aditivos", "sinergismo"],
+    "difficulty": "dificil"
+  },
+  {
+    "id": 24,
+    "question": "¿Qué conservantes se pueden usar en productos orgánicos?",
+    "category": "aplicacion",
+    "expected_topics": ["organicos", "certificacion", "naturales"],
+    "difficulty": "media"
+  },
+  {
+    "id": 25,
+    "question": "¿Cuál es el espectro antimicrobiano de la nisina?",
+    "category": "tecnica",
+    "expected_topics": ["nisina", "espectro", "microorganismos"],
+    "difficulty": "media"
+  },
+  {
+    "id": 26,
+    "question": "¿Cómo se mide la efectividad de un conservante?",
+    "category": "metodologica",
+    "expected_topics": ["metodologia", "evaluacion", "efectividad"],
+    "difficulty": "media"
+  },
+  {
+    "id": 27,
+    "question": "¿Qué problemas puede causar el uso excesivo de conservantes?",
+    "category": "conceptual",
+    "expected_topics": ["toxicidad", "seguridad", "exceso"],
+    "difficulty": "facil"
+  },
+  {
+    "id": 28,
+    "question": "¿Cuál es la diferencia entre sorbato de potasio y ácido sórbico?",
+    "category": "conceptual",
+    "expected_topics": ["sorbato", "acido sorbico", "diferencia"],
+    "difficulty": "facil"
+  },
+  {
+    "id": 29,
+    "question": "¿Qué conservantes son termoestables y pueden usarse en productos horneados?",
+    "category": "aplicacion",
+    "expected_topics": ["termoestabilidad", "horneado", "conservantes"],
+    "difficulty": "media"
+  },
+  {
+    "id": 30,
+    "question": "¿Cómo se aplica la nisina en quesos?",
+    "category": "aplicacion",
+    "expected_topics": ["nisina", "queso", "aplicacion"],
+    "difficulty": "facil"
+  },
+  {
+    "id": 31,
+    "question": "¿Qué es la resistencia cruzada en microorganismos y cómo afecta a conservantes?",
+    "category": "conceptual",
+    "expected_topics": ["resistencia", "microorganismos", "cruzada"],
+    "difficulty": "dificil"
+  },
+  {
+    "id": 32,
+    "question": "¿Cuáles son los conservantes permitidos en la Unión Europea vs Estados Unidos?",
+    "category": "regulatoria",
+    "expected_topics": ["legislacion", "EU", "FDA"],
+    "difficulty": "media"
+  },
+  {
+    "id": 33,
+    "question": "¿Cómo se usa el propionato de calcio en pan?",
+    "category": "aplicacion",
+    "expected_topics": ["propionato", "pan", "mohos"],
+    "difficulty": "facil"
+  },
+  {
+    "id": 34,
+    "question": "¿Qué factores afectan la difusión de conservantes en alimentos sólidos?",
+    "category": "tecnica",
+    "expected_topics": ["difusion", "solidos", "distribucion"],
+    "difficulty": "dificil"
+  },
+  {
+    "id": 35,
+    "question": "¿Cuál es la estabilidad de diferentes conservantes durante el almacenamiento?",
+    "category": "tecnica",
+    "expected_topics": ["estabilidad", "almacenamiento", "degradacion"],
+    "difficulty": "media"
+  },
+  {
+    "id": 36,
+    "question": "¿Qué conservantes son efectivos en alimentos de pH neutro?",
+    "category": "tecnica",
+    "expected_topics": ["pH neutro", "conservantes", "efectividad"],
+    "difficulty": "media"
+  },
+  {
+    "id": 37,
+    "question": "¿Cómo funcionan los conservantes de extractos vegetales?",
+    "category": "conceptual",
+    "expected_topics": ["extractos", "vegetales", "naturales"],
+    "difficulty": "media"
+  },
+  {
+    "id": 38,
+    "question": "¿Qué es la concentración mínima inhibitoria (MIC) de conservantes?",
+    "category": "metodologica",
+    "expected_topics": ["MIC", "concentracion", "inhibicion"],
+    "difficulty": "media"
+  },
+  {
+    "id": 39,
+    "question": "¿Cuáles son las ventajas y desventajas del uso de nitratos?",
+    "category": "comparativa",
+    "expected_topics": ["nitratos", "ventajas", "desventajas"],
+    "difficulty": "facil"
+  },
+  {
+    "id": 40,
+    "question": "¿Cómo se combina sal con conservantes para mejorar efectividad?",
+    "category": "tecnica",
+    "expected_topics": ["sal", "sinergismo", "conservantes"],
+    "difficulty": "media"
+  },
+  {
+    "id": 41,
+    "question": "¿Qué conservantes son compatibles con bacterias probióticas?",
+    "category": "aplicacion",
+    "expected_topics": ["probioticos", "compatibilidad", "conservantes"],
+    "difficulty": "dificil"
+  },
+  {
+    "id": 42,
+    "question": "¿Cuál es el impacto sensorial de diferentes conservantes en alimentos?",
+    "category": "tecnica",
+    "expected_topics": ["sensorial", "sabor", "olor"],
+    "difficulty": "media"
+  },
+  {
+    "id": 43,
+    "question": "¿Qué metodologías existen para predecir la vida útil con conservantes?",
+    "category": "metodologica",
+    "expected_topics": ["vida util", "prediccion", "modelos"],
+    "difficulty": "dificil"
+  },
+  {
+    "id": 44,
+    "question": "¿Cómo afecta el envasado a la efectividad de conservantes?",
+    "category": "tecnica",
+    "expected_topics": ["envasado", "atmosfera", "conservacion"],
+    "difficulty": "media"
+  },
+  {
+    "id": 45,
+    "question": "¿Qué conservantes son efectivos contra esporas bacterianas?",
+    "category": "tecnica",
+    "expected_topics": ["esporas", "bacterias", "conservantes"],
+    "difficulty": "media"
+  },
+  {
+    "id": 46,
+    "question": "¿Cuál es la relación entre estructura química y actividad antimicrobiana de conservantes?",
+    "category": "conceptual",
+    "expected_topics": ["estructura", "quimica", "actividad"],
+    "difficulty": "dificil"
+  },
+  {
+    "id": 47,
+    "question": "¿Qué conservantes se usan en cosmética vs alimentos?",
+    "category": "comparativa",
+    "expected_topics": ["cosmetica", "alimentos", "diferencias"],
+    "difficulty": "media"
+  },
+  {
+    "id": 48,
+    "question": "¿Cómo se valida la efectividad de conservantes en productos nuevos?",
+    "category": "metodologica",
+    "expected_topics": ["validacion", "challenge test", "desarrollo"],
+    "difficulty": "media"
+  },
+  {
+    "id": 49,
+    "question": "¿Qué papel juegan los conservantes en la prevención de botulismo?",
+    "category": "tecnica",
+    "expected_topics": ["botulismo", "clostridium", "seguridad"],
+    "difficulty": "media"
+  },
+  {
+    "id": 50,
+    "question": "¿Cuáles son las tendencias futuras en conservantes alimentarios?",
+    "category": "conceptual",
+    "expected_topics": ["tendencias", "innovacion", "futuro"],
+    "difficulty": "facil"
+  }
+]
