@@ -1,10 +1,10 @@
 # Sistema RAG con Tratamiento Avanzado de Tablas
 
-Sistema de Recuperación Aumentada de Generación (RAG) especializado en procesamiento de papers científicos con tablas, implementando un pipeline de múltiples etapas que emula la lectura humana de documentos.
+Sistema de Recuperación Aumentada de Generación (RAG) especializado en procesamiento de papers científicos con tablas, implementando un pipeline de múltiples etapas que simula la lectura humana de documentos.
 
 ## 📋 Descripción
 
-Este proyecto implementa un sistema RAG avanzado que:
+Este proyecto implementa un sistema RAG avanzado que pretende :
 - Extrae y procesa tablas de PDFs científicos manteniendo su estructura semántica
 - Utiliza two-stage retrieval (descriptores livianos → tablas completas)
 - Captura contexto narrativo alrededor de las tablas
@@ -122,7 +122,7 @@ hito2/
 ```
 
 
-## 📊 Resultados del Benchmark
+## Resultados del Benchmark
 
 Ejemplo con 5 preguntas sobre papers de ML:
 
@@ -134,8 +134,12 @@ Ejemplo con 5 preguntas sobre papers de ML:
 | 4. Reranking | 0.511 | 242 ms | 100% |
 | **5. Full** | **0.555** | 195 ms | 100% |
 
-**Conclusión**: El tratamiento de tablas mejora +5.7% el score, con latencia competitiva.
+**Conclusión**: No se logro una mejora significativamente el score, debido a las 
+complejidades propias del manejo de las tablas, para las cuales se debe realizar 
+un trabajo de mayor complejidad para un correcto analisis.
 
+
+## Informe pendiente de presentacion miercoles
 Ver [INFORME.md](INFORME.md) para análisis detallado.
 
 
