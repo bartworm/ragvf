@@ -135,8 +135,8 @@ Ejemplo con 5 preguntas sobre papers de ML:
 | **5. Full** | **0.555** | 195 ms | 100% |
 
 **Conclusión**: No se logro una mejora significativamente el score, debido a las 
-complejidades propias del manejo de las tablas, para las cuales se debe realizar 
-un trabajo de mayor complejidad para un correcto analisis.
+complejidades propias del manejo de las tablas, el cual confirma que los desafios
+se encuentras mas en el manejo de los datos que en el analisis de los mismos.
 
 
 ## Informe pendiente de presentacion miercoles
